@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+#define MAX_SIZE 5
+
+void insertAtBeginning(int a[], int *size, int num) {
+    for (int i = *size; i > 0; i--) {
+        a[i] = a[i - 1];
+    }
+    a[0] = num;
+    (*size)++;
+}
+
+void insertAtEnd(int a[], int *size, int num) {
+    a[*size] = num;
+    (*size)++;
+}
+
+void displayArray(int a[], int size) {
+    printf("Elements of array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int a[MAX_SIZE], size = 0, num;
+
+    // Inserting into an empty array
+    printf("Inserting into an empty array:\n");
+    printf("Enter data you want to insert at the beginning: ");
+    scanf("%d", &num);
+    insertAtBeginning(a, &size, num);
+    displayArray(a, size);
+
+    printf("Enter data you want to insert at the end: ");
+    scanf("%d", &num);
+    insertAtEnd(a, &size, num);
+    displayArray(a, size);
+
+    return 0;
+}
