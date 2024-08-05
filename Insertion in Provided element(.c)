@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+#define MAX_SIZE 10
+
+void insertAtBeginning(int a[], int *size, int num) {
+    if (*size < MAX_SIZE) {
+        for (int i = *size; i > 0; i--) {
+            a[i] = a[i - 1];
+        }
+        a[0] = num;
+        (*size)++;
+    } else {
+        printf("Cannot insert at beginning: Array is full.\n");
+    }
+}
+
+void insertAtEnd(int a[], int *size, int num) {
+    if (*size < MAX_SIZE) {
+        a[*size] = num;
+        (*size)++;
+    } else {
+        printf("Cannot insert at end: Array is full.\n");
+    }
+}
+
+void displayArray(int a[], int size) {
+    printf("Elements of array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int a[MAX_SIZE], size = 5; // Start with a full array
+
+    // Fill the array with 5 elements
+    for (int i = 0; i < size; i++) {
+        a[i] = (i + 1) * 10; // Fill with 10, 20, 30, 40, 50
+    }
+
+    printf("Current array (with 5 elements):\n");
+    displayArray(a, size);
+
+    // Attempt to insert elements
+    printf("Inserting into an array that already has 5 elements:\n");
+    printf("Enter data you want to insert at the beginning: ");
+    int num;
+    scanf("%d", &num);
+    insertAtBeginning(a, &size, num); // Should fail
+
+    printf("Enter data you want to insert at the end: ");
+    scanf("%d", &num);
+    insertAtEnd(a, &size, num); // Should fail
+
+    displayArray(a, size);
+
+    return 0;
+}
