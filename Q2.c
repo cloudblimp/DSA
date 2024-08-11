@@ -1,5 +1,5 @@
 #include <stdio.h>
-void deleteFirst(int* arr, int& size) {
+void deleteFirst(int* arr, int size) {
     if (size <= 0) {
         printf("No elements to delete\n");
         return;
@@ -16,7 +16,7 @@ void deleteFirst(int* arr, int& size) {
     }
     printf("\n");
 }
-void deleteLast(int* arr, int& size) {
+void deleteLast(int* arr, int size) {
     if (size <= 0) {
         printf("No elements to delete\n");
         return;
@@ -24,7 +24,7 @@ void deleteLast(int* arr, int& size) {
     size--;  //Reduce size since we deleted one element
     //Print the modified array
     printf("Array after deleting last element: ");
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size-1; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
